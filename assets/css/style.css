@@ -75,7 +75,7 @@ nav p {
 .sticky {
     position: relative;
     background-color: #0f0f0f;
-    background: url(../images/bg6.jpg) 50% 50% no-repeat;
+    background: url(../images/bg.jpg) 50% 50% no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
