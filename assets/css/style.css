@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap");
 
 * {
     padding: 0;
@@ -10,6 +10,10 @@
 
 a {
     text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 body {
@@ -38,8 +42,8 @@ section {
 }
 
 .outro {
-    background-color: #eb4330;
-    color: #0f0f0f;
+    background-color: #0b1316;
+    color: #fff;
 }
 
 nav {
@@ -55,20 +59,29 @@ nav {
 
 nav p {
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 22px;
     padding: 5px 15px;
     border-radius: 20px;
     background-color: #0f0f0f;
     color: #ebeae4;
 }
 
+.outro h1,
+.intro h1 {
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+
 .sticky {
     position: relative;
     background-color: #0f0f0f;
+    background: url(../images/bg6.jpg) 50% 50% no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .sticky p {
-    color: #0f0f0f;
+    color: #7c7c7c;
 }
 
 .char {
@@ -80,44 +93,3 @@ nav p {
 .char {
     box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

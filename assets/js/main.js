@@ -7,17 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.ticker.lagSmoothing(0);
 
     const highlightWords = [
-      "doloribus",
-      "voluptatum",
-      "Rerum",
-      "voluptates",
-      "provident",
-      "incidunt",
-      "asperiores",
-      "aliquam",
-      "quod",
-      "Rem",
-      "omnis"
+        "doloribus",
+        "voluptatum",
+        "Rerum",
+        "voluptates",
+        "provident",
+        "incidunt",
+        "asperiores",
+        "aliquam",
+        "quod",
+        "Rem",
+        "omnis",
     ];
 
     const text = new SplitType(".sticky p", { types: "words" });
@@ -25,34 +25,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const { Engine, Runner, World, Bodies, Body, Events } = Matter;
     const engine = Engine.create({
-        gravity: { x: 0, y: 0 }
+        gravity: { x: 0, y: 0 },
     });
     const runner = Runner.create();
     Runner.run(runner, engine);
 
-
-
-    const floor = Bodies.rectangle(
-        window.innerWidth /2, 
-        window.innerHeight + 5,
-        window.innerWidth,
-        20,
-        { isStatic: true } 
-    );
+    const floor = Bodies.rectangle(window.innerWidth / 2, window.innerHeight + 5, window.innerWidth, 20, {
+        isStatic: true,
+    });
 
     World.add(engine.world, floor);
 
     const shuffledWords = [...words];
-    for(let i = shuffledWords.length - 1; i > 0; i-- ) {
+    for (let i = shuffledWords.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffledWords[i], shuffledWords[j]] = [shuffledWords[j], shuffledWords[i]];
     }
 
-
     const wordsToHighlight = words.filter((word) =>
-      highlightWords.some((highlight) =>
-        word.textContent.includes(highlight)
-      )
+        highlightWords.some((highlight) => word.textContent.includes(highlight))
     );
 
     let physicsEnabled = false;
@@ -83,31 +74,31 @@ document.addEventListener("DOMContentLoaded", () => {
             charSpan.style.color = getComputedStyle(word).color;
             charElements.push(charSpan);
 
-const width = charSpan.offsetWidth || charWidth || 8;
-const height = charSpan.offsetHeight || 16;
+            const width = charSpan.offsetWidth || charWidth || 8;
+            const height = charSpan.offsetHeight || 16;
 
             const body = Bodies.rectangle(
-              (isNaN(x) ? 0 : x) + charWidth / 2,
-              (isNaN(y) ? 0 : y) + height / 2,
-              charWidth || 8,
-              height || 16,
-              {
-                restitution: 0.75,
-                friction: 0.5,
-                frictionAir: 0.0175,
-                isStatic: false
-              }
+                (isNaN(x) ? 0 : x) + charWidth / 2,
+                (isNaN(y) ? 0 : y) + height / 2,
+                charWidth || 8,
+                height || 16,
+                {
+                    restitution: 0.75,
+                    friction: 0.5,
+                    frictionAir: 0.0175,
+                    isStatic: false,
+                }
             );
 
             World.add(engine.world, body);
 
             charBodies.push({
-              body,
-              element: charSpan,
-              initialX: x,
-              initialY: y,
-              width,
-              height
+                body,
+                element: charSpan,
+                initialX: x,
+                initialY: y,
+                width,
+                height,
             });
 
             //console.log(charBodies);
@@ -117,12 +108,11 @@ const height = charSpan.offsetHeight || 16;
     function resetAnimation() {
         engine.world.gravity.y = 0;
 
-        charBodies.forEach(
-          ({ body, element, initialX, initialY, width, height }) => {
+        charBodies.forEach(({ body, element, initialX, initialY, width, height }) => {
             Body.setStatic(body, true);
             Body.setPosition(body, {
-              x: initialX + width / 2,
-              y: initialY + height / 2,
+                x: initialX + width / 2,
+                y: initialY + height / 2,
             });
             Body.setAngle(body, 0);
             Body.setVelocity(body, { x: 0, y: 0 });
@@ -130,19 +120,17 @@ const height = charSpan.offsetHeight || 16;
 
             element.style.transform = "none";
             element.style.opacity = 0;
-          }
-        );
+        });
 
         words.forEach((word) => {
             gsap.to(word, {
                 opacity: 1,
                 duration: 0.5,
-                ease: "power2.in"
+                ease: "power2.in",
             });
         });
     }
     //console.log("charBodies.length", charBodies.length);
-
 
     const tl = gsap.timeline({
         scrollTrigger: {
@@ -155,7 +143,7 @@ const height = charSpan.offsetHeight || 16;
                 const isScrollingDown = self.progress > lastProgress;
                 lastProgress = self.progress;
 
-                if(self.progress >= 0.6 && !physicsEnabled && isScrollingDown) {
+                if (self.progress >= 0.6 && !physicsEnabled && isScrollingDown) {
                     physicsEnabled = true;
                     //console.log("Activating physics...");
                     engine.world.gravity.y = 1;
@@ -172,98 +160,74 @@ const height = charSpan.offsetHeight || 16;
                         Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.25);
                         Body.setVelocity(body, {
                             x: (Math.random() - 0.5) * 5,
-                            y: -Math.random() * 5
+                            y: -Math.random() * 5,
                         });
 
                         //console.log("Static disabled for char", body);
-
                     });
 
-
-                    gsap.to(words.filter(
-                        (word) => !highlightWords.some((hw) => word.textContent.includes(hw))
-                    ), {
-                        opacity: 0,
-                        duration: 0.5,
-                        ease: "power2.out"
-                    });
+                    gsap.to(
+                        words.filter((word) => !highlightWords.some((hw) => word.textContent.includes(hw))),
+                        {
+                            opacity: 0,
+                            duration: 0.5,
+                            ease: "power2.out",
+                        }
+                    );
                 } else if (self.progress < 0.6 && physicsEnabled && !isScrollingDown) {
                     physicsEnabled = false;
                     resetAnimation();
                 }
-            }
-        }
+            },
+        },
     });
-
 
     const phase1 = gsap.timeline();
     shuffledWords.forEach((word) => {
-        phase1.to(word, {
-            color: "#eb4330",
-            duration: 0.1,
-            ease: "power2.inOut"
-        }, Math.random() * 0.9);
+        phase1.to(
+            word,
+            {
+                color: "#eb4330",
+                duration: 0.1,
+                ease: "power2.inOut",
+            },
+            Math.random() * 0.9
+        );
     });
 
-
     const phase2 = gsap.timeline();
-    const shuffledHighlights = [...wordsToHighlight]; 
-    for(let i = shuffledHighlights.length - 1; i > 0; i--) {
+    const shuffledHighlights = [...wordsToHighlight];
+    for (let i = shuffledHighlights.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [shuffledHighlights[i], shuffledHighlights[j]] = [shuffledHighlights[j], shuffledHighlights[i]];        
+        [shuffledHighlights[i], shuffledHighlights[j]] = [shuffledHighlights[j], shuffledHighlights[i]];
     }
 
     shuffledHighlights.forEach((word) => {
-        phase2.to(word, {
-            color: "#ffffff",
-            duration: 0.1,
-            ease: "power2.inOut"
-        }, Math.random() * 0.9);
+        phase2.to(
+            word,
+            {
+                color: "#ffffff",
+                duration: 0.1,
+                ease: "power2.inOut",
+            },
+            Math.random() * 0.9
+        );
     });
 
     tl.add(phase1, 0).add(phase2, 1).to({}, { duration: 2 });
 
     Events.on(engine, "afterUpdate", () => {
-         if (!physicsEnabled) return;
+        if (!physicsEnabled) return;
 
-      charBodies.forEach(
-        ({ body, element, initialX, initialY, width, height }) => {
-          if (physicsEnabled) {
-            //console.log("Body pos:", body.position);
-            //console.log(element.style.transform);
+        charBodies.forEach(({ body, element, initialX, initialY, width, height }) => {
+            if (physicsEnabled) {
+                //console.log("Body pos:", body.position);
+                //console.log(element.style.transform);
 
-            const deltaX = body.position.x - (initialX + width / 2);
-            const deltaY = body.position.y - (initialY + height / 2);
-            element.style.transform = `translate(${deltaX}px, ${deltaY}px) rotate(${body.angle}rad)`;
-          }
-        }
-      );
+                const deltaX = body.position.x - (initialX + width / 2);
+                const deltaY = body.position.y - (initialY + height / 2);
+                element.style.transform = `translate(${deltaX}px, ${deltaY}px) rotate(${body.angle}rad)`;
+            }
+        });
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

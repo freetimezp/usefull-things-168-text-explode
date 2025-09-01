@@ -1,0 +1,38 @@
+<p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla nihil minima quis, 
+            ratione aliquam tempora doloribus eaque consectetur assumenda expedita nemo commodi 
+            ipsam temporibus quae, culpa accusantium cum neque, soluta voluptatem voluptas dolorum! 
+            Fugiat mollitia sed voluptatum magnam, nemo dolore placeat? Amet accusamus et, expedita 
+            exercitationem similique culpa laudantium esse ipsa doloribus accusantium reiciendis 
+            asperiores voluptas voluptatum facere, earum recusandae ea nobis sunt molestias dicta 
+            consequatur. Rerum, minus omnis earum iste laudantium praesentium voluptates consectetur 
+            ab corporis nisi voluptatum numquam quas eaque ad quis, vitae, delectus dolore 
+            exercitationem facere voluptate quae labore laboriosam veritatis rem. Harum dolorum, 
+            quod nisi pariatur saepe aperiam ullam, aliquid dolores molestiae obcaecati quasi 
+            recusandae. Rem, distinctio laudantium accusamus soluta volupttes provident fuga! 
+            Reprehenderit optio, corporis minima deleniti est a incidunt modi, itaque facilis, 
+            molestiae quia voluptatem placeat non voluptatibus tenetur veritatis. Totam, eveniet 
+            deserunt praesentium vel recusandae nobis saepe ratione ducimus commodi odio amet eaque.
+            Voluptatum numquam quas eaque ad quis, vitae, delectus dolore 
+            exercitationem facere voluptate quae labore laboriosam veritatis rem. Harum dolorum, 
+            quod nisi pariatur saepe aperiam ullam, aliquid dolores molestiae obcaecati quasi 
+            recusandae. Rem, distinctio laudantium accusamus soluta volutates proveident fuga! 
+            Reprehenderit optio, corporis minima deleniti est a incidunt modi, itaque facilis, 
+            molestiae quia voluptatem placeat non voluptatibus tenetur veritatis. Totam, eveniet 
+            deserunt praesentium vel recusandae nobis saepe ratione ducimus commodi odio amet eaque.
+</p>
+
+const highlightWords = 
+[
+        "doloribus",
+        "voluptatum",
+        "Rerum",
+        "voluptates",
+        "provident",
+        "incidunt",
+        "asperiores",
+        "aliquam",
+        "quod",
+        "Rem",
+        "omnis",
+];
